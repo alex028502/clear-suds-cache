@@ -3,7 +3,7 @@
 .PHONY: install test clear
 
 install: virtualenv
-	$</bin/python setup.py develop
+	$</bin/python setup.py install
 test: install
 	virtualenv/bin/python setup.py test # test that things get deleted
 	# ok the library works
@@ -15,5 +15,7 @@ test: install
 virtualenv:
 	virtualenv $@
 	echo "*" > $@/.gitignore
-clear:
+clean:
 	rm -rf virtualenv
+	rm -rf *.egg-info
+	rm -rf build
